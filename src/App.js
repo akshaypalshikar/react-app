@@ -4,17 +4,16 @@ import './App.css';
 
 class App extends Component {
   render() {
-    return (
+    
+        return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+       <h1>Hi! This is a react App.</h1>
+       <p>This is really working!</p>
       </div>
     );
+  
+ // return React.createElement('div',null,React.createElement( 'h1', null,'Hi, This is a react app!!'));
+
   }
 }
 
