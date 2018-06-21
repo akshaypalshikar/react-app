@@ -9,11 +9,19 @@ class App extends Component {
     persons : [
       {name : "Akshay", age : 30},
       {name : "Poorva", age : 30}
-    ]
+    ],
+    unchangedState : "This will be untouched"
   }
 
   switchNameHandler = () => {
-    console.log("this was clicked!");
+    //console.log("this was clicked!");
+    //don't do this : this.state.persons[0].name = "Akshay Palshikar";
+    this.setState({persons :
+      [
+      {name : "Akshay Palshikar", age : 30},
+      {name : "Poorva", age : 30}
+    ]
+  })
   }
   render() {
         return (
