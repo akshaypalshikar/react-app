@@ -32,20 +32,26 @@ class App extends Component {
       padding : '8px',
       cursor : 'pointer'
     };
+
+
+    let persons = null;
+
+    if(this.state.showPersons){
+        persons = ( <div id="persons">
+                    <Person name={this.state.persons[0].name} age={this.state.persons[0].age} >My hobbies : Coding</Person>
+                    <Person  name={this.state.persons[1].name} 
+                            age={this.state.persons[1].age} 
+                          />
+                    </div>
+                  );
+    }
+
         return (
       <div className="App">
           <h1>Hi! This is a react App.</h1>
           <p>This is really working!</p>
           <button style={style} onClick={this.togglePersonsHandler.bind(this)}>Toggle Persons</button>
-          { this.state.showPersons?
-            <div id="persons">
-              <Person name={this.state.persons[0].name} age={this.state.persons[0].age} >My hobbies : Coding</Person>
-              <Person  name={this.state.persons[1].name} 
-                      age={this.state.persons[1].age} 
-                     />
-            </div>
-            :null
-          }
+          {persons}
       </div>
     );
   
