@@ -23,6 +23,11 @@ class App extends Component {
     console.log("this.state.showPersons : "+this.state.showPersons)
   }
 
+  deletePersonHandler =  (index) => {
+    const persons = this.state.persons;
+    persons.splice(index,1);
+    this.setState({persons:persons});
+  }
  
   render() {
     const style = {
@@ -38,8 +43,8 @@ class App extends Component {
 
     if(this.state.showPersons){
         persons = ( <div id="persons">
-                      {this.state.persons.map(person=>{
-                       return (<Person {...person} />);
+                      {this.state.persons.map((person,index)=>{
+                       return (<Person {...person} clicked={()=>this.deletePersonHandler(index)}/>);
                       })}
                     </div>
                   );
