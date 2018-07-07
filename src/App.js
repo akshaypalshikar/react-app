@@ -7,8 +7,8 @@ class App extends Component {
   state = {
     name : "react-app",
     persons : [
-      {name : "Akshay", age : 30},
-      {name : "Poorva", age : 30}
+      {key:1, name : "Akshay", age : 30},
+      {key2, name : "Poorva", age : 30}
     ],
     unchangedState : "This will be untouched",
     showPersons:true
