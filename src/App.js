@@ -39,20 +39,9 @@ class App extends Component {
   }
  
   render() {
-    const style = {
-      backgroundColor : 'green',
-      color:"white",
-      font : 'inherit',
-      border : '1px solid blue',
-      padding : '8px',
-      cursor : 'pointer',
-    };
-
-
     let persons = null;
-
+    let btnClass = '';
     if(this.state.showPersons){
-
         persons = ( <div id="persons">
                       {this.state.persons.map((person,index)=>{
                        return (<Person {...person} key={person.id} 
@@ -61,7 +50,7 @@ class App extends Component {
                       })}
                     </div>
                   );
-                  style.backgroundColor='red';
+        btnClass = appCssClasses.Red;
     }
 
     const assignedCssClasses = [];
@@ -78,7 +67,7 @@ class App extends Component {
           <div className={appCssClasses.App}>
               <h1>Hi! This is a react App.</h1>
               <p className={assignedCssClasses.join(' ')}>This is really working!</p>
-              <button style={style} onClick={this.togglePersonsHandler.bind(this)}>Toggle Persons</button>
+              <button className={btnClass} onClick={this.togglePersonsHandler.bind(this)}>Toggle Persons</button>
               {persons}
           </div>
       
