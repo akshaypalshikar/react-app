@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "create-react-app": "^1.5.2",
+    "radium": "^0.24.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
