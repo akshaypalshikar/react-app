@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import appCssClasses from './App.css';
 import Person from './Person/Person';
-import Radium, {StyleRoot} from 'radium';
+
 
 class App extends Component {
   state = {
@@ -47,10 +46,6 @@ class App extends Component {
       border : '1px solid blue',
       padding : '8px',
       cursor : 'pointer',
-      ':hover':{
-        backgroundColor:'lightgreen',
-        color:'black'
-      }
     };
 
 
@@ -67,30 +62,26 @@ class App extends Component {
                     </div>
                   );
                   style.backgroundColor='red';
-                  style[':hover']={
-                    backgroundColor:'salmon',
-                    color:'black'
-                  }
     }
 
-    const cssClasses = [];
+    const assignedCssClasses = [];
     if(this.state.persons.length<=2){
-      cssClasses.push('red');
+      assignedCssClasses.push(appCssClasses.red);
     }
     if(this.state.persons.length<=1){
-      cssClasses.push('bold');
+      assignedCssClasses.push(appCssClasses.bold);
     }
 
 
         return (
-        <StyleRoot>
-          <div className="App">
+      
+          <div className={appCssClasses.App}>
               <h1>Hi! This is a react App.</h1>
-              <p className={cssClasses.join(' ')}>This is really working!</p>
+              <p className={assignedCssClasses.join(' ')}>This is really working!</p>
               <button style={style} onClick={this.togglePersonsHandler.bind(this)}>Toggle Persons</button>
               {persons}
           </div>
-      </StyleRoot>
+      
     );
   
  // return React.createElement('div',null,React.createElement( 'h1', null,'Hi, This is a react app!!'));
@@ -98,4 +89,4 @@ class App extends Component {
   
 }
 
-export default Radium(App);
+export default App;
