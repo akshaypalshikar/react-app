@@ -50,6 +50,7 @@ class App extends Component {
             deletePersonHandler =  {this.deletePersonHandler}
             togglePersonsHandler = {this.togglePersonsHandler}
             nameChangedHandler = {this.nameChangedHandler}
+            title = {this.props.title}
         />
       </div>
     );
