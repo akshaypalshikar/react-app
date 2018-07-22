@@ -1,20 +1,22 @@
-import React from 'react';
+import React,{Component} from 'react';
 import Person from './Person/Person'
 import ErrorBoundary from './../ErrorBoundary/ErrorBoundary';
 
-const persons = (props) =>  (
-        <div id="persons">
-        {props.persons.map((person,index)=>{
-         return (
-         <ErrorBoundary key={person.id} >
-             <Person {...person} 
-                clicked={()=>props.deletePersonHandler(index)}
-                changed={event=>props.nameChangedHandler(event,person.id)}/>
+class Persons extends Component{
+  render(){
+    return( <div id="persons">
+    {this.props.persons.map((person,index)=>{
+     return (
+     <ErrorBoundary key={person.id} >
+         <Person {...person} 
+            clicked={()=>this.props.deletePersonHandler(index)}
+            changed={event=>this.props.nameChangedHandler(event,person.id)}/>
+  
+      </ErrorBoundary>);
       
-          </ErrorBoundary>);
-          
-        })}
-      </div>
-  );
+    })}
+  </div>);
+  }
+}
 
-export default persons;
+export default Persons;
