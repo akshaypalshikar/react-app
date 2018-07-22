@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import appCssClasses from './App.css';
 import Cockpit from './../components/Cockpit/Cockpit';
 
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
     console.log('[App.js] Inside Constructor', props);
@@ -17,11 +17,11 @@ class App extends Component {
   componentDidMount() {
     console.log('[App.js] Inside componentDidMount()');
   }
-  shouldComponentUpdate(nextProps, nextState) {
+/*   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside shouldComponentUpdate()', nextProps, nextState);
-    return true;
+    return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons;
   }
-
+ */
   componentWillUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside componentWillUpdate()', nextProps, nextState);
   }
@@ -73,6 +73,7 @@ class App extends Component {
     const cssClasses = appCssClasses;
     return (
       <div id="App" className={appCssClasses.App}>
+        <button onClick={()=>this.setState({showPersons:true})}>Show Persons</button>
         <Cockpit {...this.state} appCssClasses={cssClasses}
           deletePersonHandler={this.deletePersonHandler}
           togglePersonsHandler={this.togglePersonsHandler}
