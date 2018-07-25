@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import cssClasses from './Person.css';
+import withClass from './../../../hoc/withClass';
+import Wrapper from './../../../hoc/Wrapper';
 
 
 class Person extends Component {
@@ -21,13 +23,15 @@ class Person extends Component {
     render() {
         console.log('[Person.js] Inside render()');
         return (
-            <div className={cssClasses.Person}>
-                <p onClick={this.props.clicked}> I'm a {this.props.name} and I am {this.props.age} years old!</p>
-                <p>{this.props.children}</p>
-                <input type="text" onChange={this.props.changed} value={this.props.name} />
-            </div>
+            <Wrapper>
+                <div className={cssClasses.Person}>
+                    <p onClick={this.props.clicked}> I'm a {this.props.name} and I am {this.props.age} years old!</p>
+                    <p>{this.props.children}</p>
+                    <input type="text" onChange={this.props.changed} value={this.props.name} />
+                </div>
+            </Wrapper>
         );
     }
 }
 
-export default Person;
+export default withClass(Person,cssClasses.Person);
