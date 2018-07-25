@@ -19,11 +19,11 @@ class App extends PureComponent {
   componentDidMount() {
     console.log('[App.js] Inside componentDidMount()');
   }
-/*   shouldComponentUpdate(nextProps, nextState) {
+   shouldComponentUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside shouldComponentUpdate()', nextProps, nextState);
     return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons;
   }
- */
+
   componentWillUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside componentWillUpdate()', nextProps, nextState);
   }
@@ -39,7 +39,8 @@ class App extends PureComponent {
       { id: 2, name: "Poorva", age: 30 }
     ],
     unchangedState: "This will be untouched",
-    showPersons: true
+    showPersons: true,
+    toggleClickCounter:0
   }
 
   nameChangedHandler = (event, id) => {
@@ -56,11 +57,17 @@ class App extends PureComponent {
     console.log(this.state.persons);
   }
 
-
   togglePersonsHandler = (newName) => {
-    this.setState({
+ /*    this.setState({
       showPersons: !this.state.showPersons
-    })
+    }) */
+    this.setState((prevState,props)=>{
+      return {
+        showPersons:!prevState.showPersons,
+        toggleClickCounter:prevState.toggleClickCounter+1
+      }
+    });
+
     console.log("this.state.showPersons : " + this.state.showPersons)
   }
 
