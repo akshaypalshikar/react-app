@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import appCssClasses from './App.css';
 import Cockpit from './../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Wrapper from './../hoc/Wrapper';
+import withClass from './../hoc/withClass';
 
 
 class App extends PureComponent {
@@ -73,7 +74,7 @@ class App extends PureComponent {
     console.log('[App.js] Inside render()');
     const cssClasses = appCssClasses;
     return (
-      <WithClass cssClasses = {appCssClasses.App} >
+      <Wrapper>
         <button onClick={()=>this.setState({showPersons:true})}>Show Persons</button>
         <Cockpit {...this.state} appCssClasses={cssClasses}
           deletePersonHandler={this.deletePersonHandler}
@@ -81,9 +82,9 @@ class App extends PureComponent {
           nameChangedHandler={this.nameChangedHandler}
           title={this.props.title}
         />
-      </WithClass>
+      </Wrapper>
     );
   }
 }
 
-export default App;
+export default withClass(App,appCssClasses.App);
