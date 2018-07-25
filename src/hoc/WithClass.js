@@ -10,7 +10,6 @@ import React,{Component} from 'react';
 /* with class as return type */
 
 
-
 const withClass = (WrappedComponent,className) =>{
     return class extends Component{
         render(){
