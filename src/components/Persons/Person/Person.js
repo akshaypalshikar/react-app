@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cssClasses from './Person.css';
 import withClass from './../../../hoc/withClass';
 import Wrapper from './../../../hoc/Wrapper';
+import PropTypes from 'prop-types';
 
 
 class Person extends Component {
@@ -32,6 +33,14 @@ class Person extends Component {
             </Wrapper>
         );
     }
+}
+
+Person.propTypes = {
+    name : PropTypes.string,
+    age : PropTypes.number,
+    clicked : PropTypes.func,
+    changed : PropTypes.func
+
 }
 
 export default withClass(Person,cssClasses.Person);
