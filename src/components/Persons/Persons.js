@@ -46,7 +46,6 @@ class Persons extends PureComponent {
               ref = {this.lastPersonRef}
               clicked={() => this.props.deletePersonHandler(index)}
               changed={event => this.props.nameChangedHandler(event, person.id)} 
-
               position={index}  />
 
           </ErrorBoundary>);

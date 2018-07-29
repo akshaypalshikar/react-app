@@ -4,6 +4,8 @@ import Cockpit from './../components/Cockpit/Cockpit';
 import Wrapper from './../hoc/Wrapper';
 import withClass from './../hoc/withClass';
 
+export const AuthContext = React.createContext(false);
+
 
 class App extends PureComponent {
   constructor(props) {
@@ -21,7 +23,8 @@ class App extends PureComponent {
   }
    shouldComponentUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside shouldComponentUpdate()', nextProps, nextState);
-    return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons;
+    return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons 
+    || this.state.isAuthenticated!==nextState.isAuthenticated;
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -40,7 +43,8 @@ class App extends PureComponent {
     ],
     unchangedState: "This will be untouched",
     showPersons: true,
-    toggleClickCounter:0
+    toggleClickCounter:0,
+    isAuthenticated : false
   }
 
   nameChangedHandler = (event, id) => {
@@ -77,18 +81,25 @@ class App extends PureComponent {
     this.setState({ persons: persons });
   }
 
+  loginHandler = () =>{
+    this.setState({isAuthenticated:true});
+  }
+
   render() {
     console.log('[App.js] Inside render()');
     const cssClasses = appCssClasses;
     return (
       <Wrapper>
         <button onClick={()=>this.setState({showPersons:true})}>Show Persons</button>
-        <Cockpit {...this.state} appCssClasses={cssClasses}
-          deletePersonHandler={this.deletePersonHandler}
-          togglePersonsHandler={this.togglePersonsHandler}
-          nameChangedHandler={this.nameChangedHandler}
-          title={this.props.title}
-        />
+        <AuthContext.Provider value={this.state.isAuthenticated}>
+          <Cockpit {...this.state} appCssClasses={cssClasses}
+            deletePersonHandler={this.deletePersonHandler}
+            togglePersonsHandler={this.togglePersonsHandler}
+            nameChangedHandler={this.nameChangedHandler}
+            title={this.props.title}
+            login={this.loginHandler}
+          />
+        </AuthContext.Provider>
       </Wrapper>
     );
   }

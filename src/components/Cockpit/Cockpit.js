@@ -10,6 +10,7 @@ const cockpit = (props) => {
         persons = (<Persons persons={props.persons}      
           deletePersonHandler = {props.deletePersonHandler}
           nameChangedHandler = {props.nameChangedHandler}
+          isAuthenticated = {props.isAuthenticated}
         />);
         btnClass = [cockpitCssClasses.Button,cockpitCssClasses.Red].join(' ');
     }
@@ -27,6 +28,7 @@ const cockpit = (props) => {
             <h1>{props.title}</h1>
             <p className={assignedCssClasses.join(' ')}>This is really working!</p>
             <button className={btnClass} onClick={props.togglePersonsHandler.bind(this)}>Toggle Persons</button>
+            <button onClick={props.login}>Login</button>
             {persons}
         </Wrapper>
     )};
