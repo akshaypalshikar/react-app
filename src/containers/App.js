@@ -4,6 +4,8 @@ import Cockpit from './../components/Cockpit/Cockpit';
 import Wrapper from './../hoc/Wrapper';
 import withClass from './../hoc/withClass';
 
+export const AuthContext = React.createContext(false);
+
 
 class App extends PureComponent {
   constructor(props) {
@@ -89,14 +91,15 @@ class App extends PureComponent {
     return (
       <Wrapper>
         <button onClick={()=>this.setState({showPersons:true})}>Show Persons</button>
-        <Cockpit {...this.state} appCssClasses={cssClasses}
-          deletePersonHandler={this.deletePersonHandler}
-          togglePersonsHandler={this.togglePersonsHandler}
-          nameChangedHandler={this.nameChangedHandler}
-          title={this.props.title}
-          login={this.loginHandler}
-          isAuthenticated={this.state.isAuthenticated}
-        />
+        <AuthContext.Provider value={this.state.isAuthenticated}>
+          <Cockpit {...this.state} appCssClasses={cssClasses}
+            deletePersonHandler={this.deletePersonHandler}
+            togglePersonsHandler={this.togglePersonsHandler}
+            nameChangedHandler={this.nameChangedHandler}
+            title={this.props.title}
+            login={this.loginHandler}
+          />
+        </AuthContext.Provider>
       </Wrapper>
     );
   }
