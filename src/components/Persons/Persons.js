@@ -43,7 +43,7 @@ class Persons extends PureComponent {
         return (
           <ErrorBoundary key={person.id} >
             <Person {...person}
-              ref = {this.lastPersonRef}
+              forwardedRef = {this.lastPersonRef}
               clicked={() => this.props.deletePersonHandler(index)}
               changed={event => this.props.nameChangedHandler(event, person.id)} 
 

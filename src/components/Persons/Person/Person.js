@@ -53,4 +53,4 @@ Person.propTypes = {
 
 }
 
-export default Person;
+export default withClass(Person,cssClasses.Person);
