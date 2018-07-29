@@ -33,6 +33,7 @@ class Person extends Component {
         return (
             <Wrapper>
                 <div className={cssClasses.Person}>
+                    {this.props.isAuthenticated?<p>I'm authenticated</p>:null}
                     <p onClick={this.props.clicked}> I'm a {this.props.name} and I am {this.props.age} years old!</p>
                     <p>{this.props.children}</p>
                     <input type="text" ref={this.inputElement}

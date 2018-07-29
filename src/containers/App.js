@@ -21,7 +21,8 @@ class App extends PureComponent {
   }
    shouldComponentUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside shouldComponentUpdate()', nextProps, nextState);
-    return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons;
+    return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons 
+    || this.state.isAuthenticated!==nextState.isAuthenticated;
   }
 
   componentWillUpdate(nextProps, nextState) {
@@ -40,7 +41,8 @@ class App extends PureComponent {
     ],
     unchangedState: "This will be untouched",
     showPersons: true,
-    toggleClickCounter:0
+    toggleClickCounter:0,
+    isAuthenticated : false
   }
 
   nameChangedHandler = (event, id) => {
@@ -77,6 +79,10 @@ class App extends PureComponent {
     this.setState({ persons: persons });
   }
 
+  loginHandler = () =>{
+    this.setState({isAuthenticated:true});
+  }
+
   render() {
     console.log('[App.js] Inside render()');
     const cssClasses = appCssClasses;
@@ -88,6 +94,8 @@ class App extends PureComponent {
           togglePersonsHandler={this.togglePersonsHandler}
           nameChangedHandler={this.nameChangedHandler}
           title={this.props.title}
+          login={this.loginHandler}
+          isAuthenticated={this.state.isAuthenticated}
         />
       </Wrapper>
     );
