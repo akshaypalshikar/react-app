@@ -13,7 +13,7 @@ class App extends PureComponent {
     console.log('[App.js] Inside Constructor', props);
 
   }
-
+  //discouraged
   componentWillMount() {
     console.log('[App.js] Inside componentWillMount()');
   }
@@ -26,15 +26,26 @@ class App extends PureComponent {
     return this.state.persons!==nextState.persons || this.state.showPersons!==nextState.showPersons 
     || this.state.isAuthenticated!==nextState.isAuthenticated;
   }
-
+  //discouraged
   componentWillUpdate(nextProps, nextState) {
     console.log('[UDPATE App.js] Inside componentWillUpdate()', nextProps, nextState);
+  }
+  //discouraged
+  componentWillReceiveProps(nextProps,nextContext){
+    console.log('[App.js] Inside componentWillReceiveProps()', nextProps, nextContext);
   }
 
   componentDidUpdate() {
     console.log('[UDPATE App.js] Inside componentDidUpdate()', this.props, this.State);
   }
-
+  //new lifecycle in React 16.3
+  static getDerivedStateFromProps(nextProps,prevState){
+    console.log('[UDPATE App.js] Inside getDerivedStateFromProps()', nextProps, prevState);
+  }
+  //new lifecycle in React 16.3
+  getSnapshotBeforeUpdate(prevProps,prevState){
+    console.log('[UDPATE App.js] Inside getSnapshotBeforeUpdate()', prevProps, prevState);
+  }
   state = {
     name: "react-app",
     persons: [
